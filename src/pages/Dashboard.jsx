@@ -1,3 +1,4 @@
+import ItemCard from "../components/ItemCard";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -7,7 +8,8 @@ const Dashboard = () => {
         <header>dwindle</header>
       </div>
       <main id="view-pane" className="pane">
-        Viewing Pane
+        <ItemCard />
+        <ItemCard />
       </main>
     </div>
   );

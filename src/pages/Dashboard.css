@@ -18,11 +18,15 @@
   position: fixed;
   background-color: rgb(250, 200, 114);
   z-index: 1;
-  padding: 1rem;
 }
 
 #view-pane {
   margin-left: 20%;
   width: 80%;
-  background-color: white;
+  height: 100%;
+  position: fixed;
+  background-color: lightgray;
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  gap: 5px;
 }

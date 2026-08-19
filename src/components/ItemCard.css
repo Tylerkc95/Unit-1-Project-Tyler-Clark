@@ -1,0 +1,15 @@
+#item-card {
+  /* max-width: 20%;
+  max-height: 80%; */
+  background-color: gray;
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 5%;
+  grid-column: 1 / span 3;
+  /* grid-row: 1 / span 2; */
+}
+
+.item-pic {
+  max-width: 80%;
+  max-height: auto;
+}
