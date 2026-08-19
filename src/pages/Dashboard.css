@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#dashboard-page {
+  display: flex;
+}
+
+.pane {
+  padding: 1rem;
+}
+
+#sidebar {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  background-color: rgb(250, 200, 114);
+  z-index: 1;
+  padding: 1rem;
+}
+
+#view-pane {
+  margin-left: 20%;
+  width: 80%;
+  background-color: white;
+}

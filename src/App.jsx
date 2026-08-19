@@ -1,7 +1,12 @@
+import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 function App() {
-  return <>Hello, LaunchCode!</>;
+  return (
+    <>
+      <Dashboard />
+    </>
+  );
 }
 
 export default App;
