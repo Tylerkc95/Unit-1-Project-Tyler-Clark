@@ -1,5 +1,6 @@
 import ItemCard from "../components/ItemCard";
 import "./Dashboard.css";
+import items from "../data/item-data.js";
 
 const Dashboard = () => {
   return (
@@ -8,8 +9,9 @@ const Dashboard = () => {
         <header>dwindle</header>
       </div>
       <main id="view-pane" className="pane">
-        <ItemCard />
-        <ItemCard />
+        {items.map((item, index) => (
+          <ItemCard key={index} item={item} />
+        ))}
       </main>
     </div>
   );

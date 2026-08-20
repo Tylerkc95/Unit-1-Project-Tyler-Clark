@@ -1,15 +1,15 @@
 import "./ItemCard.css";
 
-const ItemCard = () => {
+const ItemCard = ({ item }) => {
   return (
-    <div id="item-card" className="item-card">
+    <div id={`${item.name}-card`} className="item-card">
       <img
-        id="item-pic"
+        id={`${item.name}-pic`}
         className="item-pic"
-        src="../src/images/TV.jpg"
-        alt="Picture of item."
+        src={`../src/images/${item.image}.jpg`}
+        alt={`Picture of ${item.name}.`}
       />
-      <h2>TV</h2>
+      <h2>{item.name}</h2>
     </div>
   );
 };

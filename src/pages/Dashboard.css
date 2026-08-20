@@ -26,7 +26,11 @@
   height: 100%;
   position: fixed;
   background-color: lightgray;
-  display: grid;
-  grid-template-columns: repeat(12, [col-start] 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr); */
   gap: 5px;
+  overflow-y: auto;
+  columns: 3;
+  column-gap: 15px;
+  list-style: none;
 }
