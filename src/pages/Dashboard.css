@@ -66,5 +66,6 @@
   font-size: 5rem;
   justify-content: center;
   align-content: center;
-  display: grid;
+  display: block;
+  columns: 2;
 }
