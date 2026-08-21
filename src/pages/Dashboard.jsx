@@ -7,7 +7,13 @@ import OverlayMenu from "../components/OverlayMenu.jsx";
 import OverlayAlert from "../components/OverlayAlert.jsx";
 
 const Dashboard = () => {
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  // const [isOverlayMenuVisible, setIsOverlayMenuVisible] = useState(false);
+  const [overlayMenuData, setOverlayMenuData] = useState({
+    visibility: false,
+    type: "",
+  });
+  // const handleOverlayMenu = () => {};
+
   return (
     <div id="dashboard-page">
       <div id="sidebar" className="pane">
@@ -24,13 +30,26 @@ const Dashboard = () => {
         </select>
         <hr />
       </div>
-      {isOverlayVisible && <OverlayMenu visibility={setIsOverlayVisible} />}
+      {overlayMenuData.visibility && (
+        <OverlayMenu
+          overlayMenuData={overlayMenuData}
+          setOverlayMenuData={setOverlayMenuData}
+        />
+      )}
       {/* <OverlayAlert/> */}
       <main id="view-pane" className="pane">
         {items.map((item, index) => (
-          <ItemCard key={index} item={item} />
+          <ItemCard
+            key={index}
+            item={item}
+            overlayMenuData={overlayMenuData}
+            setOverlayMenuData={setOverlayMenuData}
+          />
         ))}
-        <NewItemButton onClick={() => setIsOverlayVisible(true)} />
+        <NewItemButton
+          overlayMenuData={overlayMenuData}
+          setOverlayMenuData={setOverlayMenuData}
+        />
       </main>
     </div>
   );

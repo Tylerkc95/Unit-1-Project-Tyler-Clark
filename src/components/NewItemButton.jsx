@@ -1,6 +1,15 @@
-const NewItemButton = ({ onClick }) => {
+const NewItemButton = ({ overlayMenuData, setOverlayMenuData }) => {
   return (
-    <button id="new-item-button" onClick={onClick}>
+    <button
+      id="new-item-button"
+      onClick={() =>
+        setOverlayMenuData({
+          overlayMenuData,
+          visibility: true,
+          type: "new-item",
+        })
+      }
+    >
       +
     </button>
   );
