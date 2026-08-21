@@ -7,12 +7,11 @@ import OverlayMenu from "../components/OverlayMenu.jsx";
 import OverlayAlert from "../components/OverlayAlert.jsx";
 
 const Dashboard = () => {
-  // const [isOverlayMenuVisible, setIsOverlayMenuVisible] = useState(false);
   const [overlayMenuData, setOverlayMenuData] = useState({
     visibility: false,
     type: "",
+    item: "",
   });
-  // const handleOverlayMenu = () => {};
 
   return (
     <div id="dashboard-page">

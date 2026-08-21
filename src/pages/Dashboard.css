@@ -67,11 +67,13 @@
   padding: 0.5rem;
   border-radius: 2%;
   background-color: var(--overlay-menu);
-  font-size: 5rem;
+  font-size: 2rem;
   justify-content: center;
   align-content: center;
-  display: block;
+  display: flex;
   columns: 2;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .overlay-alert {

@@ -10,6 +10,7 @@ const ItemCard = ({ item, overlayMenuData, setOverlayMenuData }) => {
           overlayMenuData,
           visibility: true,
           type: "item-details",
+          item: item,
         })
       }
     >
