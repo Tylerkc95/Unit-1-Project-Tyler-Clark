@@ -1,8 +1,26 @@
 import { useState } from "react";
 
-const OverlayMenu = ({ overlayMenuData, setOverlayMenuData, handleChange }) => {
+const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
   let type = overlayMenuData.type;
   let item = overlayMenuData.item;
+
+  const [formData, setFormData] = useState({
+    name: item.name,
+    project: item.project,
+    progress: item.progress,
+    tag: item.tag,
+    actions: item.actions,
+    description: item.description,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(e.target);
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   // Overlay menu contents if the new item button is clicked
   if (type === "new-item") {
@@ -40,20 +58,23 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData, handleChange }) => {
         <span>Progress: {item.progress}</span>
         <button
           onClick={() =>
-            setOverlayMenuData({ overlayMenuData, visibility: false, item: "" })
+            setOverlayMenuData((prevData) => ({
+              ...prevData,
+              visibility: false,
+              item: "",
+            }))
           }
         >
           Back
         </button>
         <button
-          onClick={() => (
+          onClick={() =>
             setOverlayMenuData((prevData) => ({
               ...prevData,
               visibility: true,
               type: "edit-item",
-            })),
-            console.log(overlayMenuData)
-          )}
+            }))
+          }
         >
           Edit Item
         </button>
@@ -71,29 +92,31 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData, handleChange }) => {
         <input
           id="edit-item-name-input"
           name="name"
-          value={item.name}
+          value={formData.name}
           onChange={handleChange}
           placeholder="Item name..."
         ></input>
         <input
           id="edit-item-project-input"
           name="project"
-          value={item.project}
+          value={formData.project}
           onChange={handleChange}
           placeholder="Project..."
         ></input>
         <input
           id="edit-item-progress-input"
           name="progress"
-          value={item.progress}
+          value={formData.progress}
           onChange={handleChange}
           placeholder="Progress..."
         ></input>
         <button
-          onClick={() => (
-            setOverlayMenuData({ overlayMenuData, visibility: false }),
-            console.log(overlayMenuData)
-          )}
+          onClick={() =>
+            setOverlayMenuData((prevData) => ({
+              ...prevData,
+              type: "item-details",
+            }))
+          }
         >
           Cancel
         </button>
@@ -101,21 +124,21 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData, handleChange }) => {
         <input
           id="edit-item-tag-input"
           name="tag"
-          value={item.tag}
+          value={formData.tag}
           onChange={handleChange}
           placeholder="Tags..."
         ></input>
         <input
           id="edit-item-action-input"
           name="action"
-          value={item.action}
+          value={formData.action}
           onChange={handleChange}
           placeholder="Actions..."
         ></input>
         <textarea
           id="edit-item-description-input"
           name="description"
-          value={item.description}
+          value={formData.description}
           onChange={handleChange}
           placeholder="Item Description..."
           rows="5"
