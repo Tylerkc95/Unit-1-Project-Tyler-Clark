@@ -13,6 +13,23 @@ const Dashboard = () => {
     item: "",
   });
 
+  const { formData, setFormData } = useState({
+    name: "",
+    project: "",
+    progress: "",
+    tag: "",
+    actions: "",
+    description: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   return (
     <div id="dashboard-page">
       <div id="sidebar" className="pane">
@@ -29,13 +46,17 @@ const Dashboard = () => {
         </select>
         <hr />
       </div>
+
       {overlayMenuData.visibility && (
         <OverlayMenu
           overlayMenuData={overlayMenuData}
           setOverlayMenuData={setOverlayMenuData}
+          handleChange={handleChange}
         />
       )}
+
       {/* <OverlayAlert/> */}
+
       <main id="view-pane" className="pane">
         {items.map((item, index) => (
           <ItemCard

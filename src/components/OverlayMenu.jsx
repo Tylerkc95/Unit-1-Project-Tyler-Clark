@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
+const OverlayMenu = ({ overlayMenuData, setOverlayMenuData, handleChange }) => {
   let type = overlayMenuData.type;
   let item = overlayMenuData.item;
+
+  // Overlay menu contents if the new item button is clicked
   if (type === "new-item") {
     return (
       <div className="overlay-menu">
@@ -10,9 +12,10 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         <input id="new-item-project-input" placeholder="Project..."></input>
         <input id="new-item-progress-input" placeholder="Progress..."></input>
         <button
-          onClick={() =>
-            setOverlayMenuData({ overlayMenuData, visibility: false })
-          }
+          onClick={() => (
+            setOverlayMenuData({ overlayMenuData, visibility: false }),
+            console.log(overlayMenuData)
+          )}
         >
           Cancel
         </button>
@@ -27,6 +30,8 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         ></textarea>
       </div>
     );
+
+    // Overlay menu contents if an item card is clicked
   } else if (type === "item-details") {
     return (
       <div className="overlay-menu">
@@ -40,11 +45,82 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         >
           Back
         </button>
-        <button>Edit Item</button>
+        <button
+          onClick={() => (
+            setOverlayMenuData((prevData) => ({
+              ...prevData,
+              visibility: true,
+              type: "edit-item",
+            })),
+            console.log(overlayMenuData)
+          )}
+        >
+          Edit Item
+        </button>
         <button>Delete Item</button>
         <span>Tags: {item.tag}</span>
         <span>Actions: {item.action}</span>
         <span>Description: {item.description}</span>
+      </div>
+    );
+
+    // Overlay menu contents if the edit item button is clicked while in an item card
+  } else if (type === "edit-item") {
+    return (
+      <div className="overlay-menu">
+        <input
+          id="edit-item-name-input"
+          name="name"
+          value={item.name}
+          onChange={handleChange}
+          placeholder="Item name..."
+        ></input>
+        <input
+          id="edit-item-project-input"
+          name="project"
+          value={item.project}
+          onChange={handleChange}
+          placeholder="Project..."
+        ></input>
+        <input
+          id="edit-item-progress-input"
+          name="progress"
+          value={item.progress}
+          onChange={handleChange}
+          placeholder="Progress..."
+        ></input>
+        <button
+          onClick={() => (
+            setOverlayMenuData({ overlayMenuData, visibility: false }),
+            console.log(overlayMenuData)
+          )}
+        >
+          Cancel
+        </button>
+        <button>Save Item</button>
+        <input
+          id="edit-item-tag-input"
+          name="tag"
+          value={item.tag}
+          onChange={handleChange}
+          placeholder="Tags..."
+        ></input>
+        <input
+          id="edit-item-action-input"
+          name="action"
+          value={item.action}
+          onChange={handleChange}
+          placeholder="Actions..."
+        ></input>
+        <textarea
+          id="edit-item-description-input"
+          name="description"
+          value={item.description}
+          onChange={handleChange}
+          placeholder="Item Description..."
+          rows="5"
+          cols="30"
+        ></textarea>
       </div>
     );
   }

@@ -6,12 +6,12 @@ const ItemCard = ({ item, overlayMenuData, setOverlayMenuData }) => {
       id={`${item.name}-card`}
       className="item-card"
       onClick={() =>
-        setOverlayMenuData({
-          overlayMenuData,
+        setOverlayMenuData((prevData) => ({
+          ...prevData,
           visibility: true,
           type: "item-details",
           item: item,
-        })
+        }))
       }
     >
       <img
