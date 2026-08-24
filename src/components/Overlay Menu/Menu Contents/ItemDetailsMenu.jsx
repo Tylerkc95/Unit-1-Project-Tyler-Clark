@@ -1,3 +1,5 @@
+import { items } from "../../../data/item-data";
+
 const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
   let item = overlayMenuData.item;
   return (
@@ -27,7 +29,19 @@ const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
       >
         Edit Item
       </button>
-      <button>Delete Item</button>
+      <button
+        onClick={() => (
+          items.splice(items.indexOf(overlayMenuData.item), 1),
+          setOverlayMenuData((prevData) => ({
+            ...prevData,
+            visibility: false,
+            type: "",
+            item: "",
+          }))
+        )}
+      >
+        Delete Item
+      </button>
       <span>Tags: {item.tag}</span>
       <span>Actions: {item.action}</span>
       <span>Description: {item.description}</span>
