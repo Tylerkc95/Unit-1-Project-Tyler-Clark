@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ItemCard from "../components/ItemCard";
 import "./Dashboard.css";
-import items from "../data/item-data.js";
+import {items} from "../data/item-data.js";
 import NewItemButton from "../components/NewItemButton.jsx";
 import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/OverlayAlert.jsx";

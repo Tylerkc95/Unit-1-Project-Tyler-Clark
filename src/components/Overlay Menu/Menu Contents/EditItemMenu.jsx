@@ -7,13 +7,12 @@ const EditItemMenu = ({ overlayMenuData, setOverlayMenuData }) => {
     project: item.project,
     progress: item.progress,
     tag: item.tag,
-    actions: item.actions,
+    action: item.action,
     description: item.description,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
