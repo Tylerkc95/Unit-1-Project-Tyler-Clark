@@ -1,7 +1,7 @@
 import { items } from "../../../data/item-data";
 
 const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
-  let item = overlayMenuData.item;
+  let item = overlayMenuData.menuItem;
   return (
     <div className="overlay-menu">
       <span>Name: {item.name}</span>
@@ -11,8 +11,8 @@ const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         onClick={() =>
           setOverlayMenuData((prevData) => ({
             ...prevData,
-            visibility: false,
-            item: "",
+            menuVisibility: false,
+            menuItem: "",
           }))
         }
       >
@@ -22,8 +22,8 @@ const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         onClick={() =>
           setOverlayMenuData((prevData) => ({
             ...prevData,
-            visibility: true,
-            type: "edit-item",
+            menuVisibility: true,
+            menuType: "edit-item",
           }))
         }
       >
@@ -31,12 +31,12 @@ const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
       </button>
       <button
         onClick={() => (
-          items.splice(items.indexOf(overlayMenuData.item), 1),
+          items.splice(items.indexOf(item), 1),
           setOverlayMenuData((prevData) => ({
             ...prevData,
-            visibility: false,
-            type: "",
-            item: "",
+            menuVisibility: false,
+            menuType: "",
+            menuItem: "",
           }))
         )}
       >

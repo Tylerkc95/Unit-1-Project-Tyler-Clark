@@ -1,16 +1,16 @@
 import { useState } from "react";
 import ItemCard from "../components/ItemCard";
 import "./Dashboard.css";
-import {items} from "../data/item-data.js";
+import { items } from "../data/item-data.js";
 import NewItemButton from "../components/NewItemButton.jsx";
 import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/OverlayAlert.jsx";
 
 const Dashboard = () => {
   const [overlayMenuData, setOverlayMenuData] = useState({
-    visibility: false,
-    type: "",
-    item: "",
+    menuVisibility: false,
+    menuType: "",
+    menuItem: "",
   });
 
   return (
@@ -30,7 +30,7 @@ const Dashboard = () => {
         <hr />
       </div>
 
-      {overlayMenuData.visibility && (
+      {overlayMenuData.menuVisibility && (
         <OverlayMenu
           overlayMenuData={overlayMenuData}
           setOverlayMenuData={setOverlayMenuData}
@@ -40,13 +40,15 @@ const Dashboard = () => {
       {/* <OverlayAlert/> */}
 
       <main id="view-pane" className="pane">
-        {items.map((item, index) => (
-          <ItemCard
-            key={index}
-            item={item}
-            setOverlayMenuData={setOverlayMenuData}
-          />
-        ))}
+        {items.length == 0
+          ? "You have no items saved."
+          : items.map((item, index) => (
+              <ItemCard
+                key={index}
+                item={item}
+                setOverlayMenuData={setOverlayMenuData}
+              />
+            ))}
         <NewItemButton
           overlayMenuData={overlayMenuData}
           setOverlayMenuData={setOverlayMenuData}

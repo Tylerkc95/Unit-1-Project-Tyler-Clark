@@ -34,9 +34,9 @@ const NewItemMenu = ({ setOverlayMenuData }) => {
   const resetOverlayMenuData = () => {
     setOverlayMenuData((prevData) => ({
       ...prevData,
-      visibility: false,
-      type: "",
-      item: "",
+      menuVisibility: false,
+      menuType: "",
+      menuItem: "",
     }));
   };
 

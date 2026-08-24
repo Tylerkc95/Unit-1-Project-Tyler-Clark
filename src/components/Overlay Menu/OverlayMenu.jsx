@@ -3,7 +3,7 @@ import ItemDetailsMenu from "./Menu Contents/ItemDetailsMenu";
 import EditItemMenu from "./Menu Contents/EditItemMenu";
 
 const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
-  let type = overlayMenuData.type;
+  let type = overlayMenuData.menuType;
 
   // Overlay menu contents if the new item button is clicked
   if (type === "new-item") {

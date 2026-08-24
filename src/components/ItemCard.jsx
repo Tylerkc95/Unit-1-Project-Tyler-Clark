@@ -8,9 +8,9 @@ const ItemCard = ({ item, setOverlayMenuData }) => {
       onClick={() =>
         setOverlayMenuData((prevData) => ({
           ...prevData,
-          visibility: true,
-          type: "item-details",
-          item: item,
+          menuVisibility: true,
+          menuType: "item-details",
+          menuItem: item,
         }))
       }
     >

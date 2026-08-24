@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const EditItemMenu = ({ overlayMenuData, setOverlayMenuData }) => {
-  const item = overlayMenuData.item;
+  const item = overlayMenuData.menuItem;
   const [formData, setFormData] = useState({
     name: item.name,
     project: item.project,
@@ -46,7 +46,7 @@ const EditItemMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         onClick={() =>
           setOverlayMenuData((prevData) => ({
             ...prevData,
-            type: "item-details",
+            menuType: "item-details",
           }))
         }
       >
