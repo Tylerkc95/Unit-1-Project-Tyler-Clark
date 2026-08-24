@@ -1,13 +1,13 @@
-const NewItemButton = ({ overlayMenuData, setOverlayMenuData }) => {
+const NewItemButton = ({ setOverlayMenuData }) => {
   return (
     <button
       id="new-item-button"
       onClick={() =>
-        setOverlayMenuData({
-          overlayMenuData,
+        setOverlayMenuData((prevData) => ({
+          ...prevData,
           visibility: true,
           type: "new-item",
-        })
+        }))
       }
     >
       +

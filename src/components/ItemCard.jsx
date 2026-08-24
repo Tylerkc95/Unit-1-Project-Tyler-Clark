@@ -1,6 +1,6 @@
 import "./ItemCard.css";
 
-const ItemCard = ({ item, overlayMenuData, setOverlayMenuData }) => {
+const ItemCard = ({ item, setOverlayMenuData }) => {
   return (
     <div
       id={`${item.name}-card`}

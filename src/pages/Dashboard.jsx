@@ -3,7 +3,7 @@ import ItemCard from "../components/ItemCard";
 import "./Dashboard.css";
 import items from "../data/item-data.js";
 import NewItemButton from "../components/NewItemButton.jsx";
-import OverlayMenu from "../components/OverlayMenu.jsx";
+import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/OverlayAlert.jsx";
 
 const Dashboard = () => {
@@ -44,7 +44,6 @@ const Dashboard = () => {
           <ItemCard
             key={index}
             item={item}
-            overlayMenuData={overlayMenuData}
             setOverlayMenuData={setOverlayMenuData}
           />
         ))}

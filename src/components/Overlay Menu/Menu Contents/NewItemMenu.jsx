@@ -1,0 +1,33 @@
+const NewItemMenu = ({ setOverlayMenuData }) => {
+  return (
+    <div className="overlay-menu">
+      <input id="new-item-name-input" placeholder="Item name..."></input>
+      <input id="new-item-project-input" placeholder="Project..."></input>
+      <input id="new-item-progress-input" placeholder="Progress..."></input>
+      <button
+        onClick={() => (
+          setOverlayMenuData((prevData) => ({
+            ...prevData,
+            visibility: false,
+          })),
+          console.log("Test")
+        )}
+      >
+        Cancel
+      </button>
+      <button onClick={() => console.log("File save logic will go here.")}>
+        Save Item
+      </button>
+      <input id="new-item-tag-input" placeholder="Tags..."></input>
+      <input id="new-item-action-input" placeholder="Actions..."></input>
+      <textarea
+        id="new-item-description-input"
+        placeholder="Item Description..."
+        rows="5"
+        cols="30"
+      ></textarea>
+    </div>
+  );
+};
+
+export default NewItemMenu;
