@@ -1,16 +1,11 @@
-import NewItemMenu from "./Menu Contents/NewItemMenu";
+import ItemInputMenu from "./Menu Contents/ItemInputMenu";
 import ItemDetailsMenu from "./Menu Contents/ItemDetailsMenu";
-import EditItemMenu from "./Menu Contents/EditItemMenu";
 
 const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
-  let type = overlayMenuData.menuType;
+  const type = overlayMenuData.menuType;
 
-  // Overlay menu contents if the new item button is clicked
-  if (type === "new-item") {
-    return <NewItemMenu setOverlayMenuData={setOverlayMenuData} />;
-
-    // Overlay menu contents if an item card is clicked
-  } else if (type === "item-details") {
+  // Overlay menu contents if an item card is clicked
+  if (type === "item-details") {
     return (
       <ItemDetailsMenu
         overlayMenuData={overlayMenuData}
@@ -18,10 +13,10 @@ const OverlayMenu = ({ overlayMenuData, setOverlayMenuData }) => {
       />
     );
 
-    // Overlay menu contents if the edit item button is clicked while in an item card
-  } else if (type === "edit-item") {
+    // Overlay menu contents if the new item button is clicked or if the edit item button is clicked while in an item card
+  } else if (type === "new-item" || type === "edit-item") {
     return (
-      <EditItemMenu
+      <ItemInputMenu
         overlayMenuData={overlayMenuData}
         setOverlayMenuData={setOverlayMenuData}
       />
