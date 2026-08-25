@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Item, items } from "../../../data/item-data";
 
 const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
-  const type = overlayMenuData.menuType;
+  const menuType = overlayMenuData.menuType;
   const currentItem = overlayMenuData.menuItem;
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +15,7 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
 
   // Runs once on render to determine if the form should be preloaded with the selected item's details, and again if the type changes
   useEffect(() => {
-    if (type === "edit-item") {
+    if (menuType === "edit-item") {
       setFormData((prevData) => ({
         ...prevData,
         name: currentItem.name,
@@ -71,15 +71,15 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
 
     const itemToSave = new Item(...itemDetails);
 
-    if (type === "new-item") {
+    if (menuType === "new-item") {
       items.push(itemToSave);
-    } else if (type === "edit-item") {
+    } else if (menuType === "edit-item") {
       items.splice(items.indexOf(currentItem), 1, itemToSave);
     }
 
     setOverlayMenuData((prevData) => ({
       ...prevData,
-      menuType: "item-details",
+      menuType: "item-details", // also sets menuType = "item-details"
       menuItem: itemToSave, // also sets currentItem = itemToSave
     }));
 
@@ -109,10 +109,21 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         onChange={handleChange}
         placeholder="Progress..."
       ></input>
-      <button onClick={() => (resetFormData(), resetOverlayMenuData())}>
+      <button
+        onClick={() =>
+          menuType === "edit-item"
+            ? setOverlayMenuData((prevData) => ({
+                ...prevData,
+                menuType: "item-details",
+              }))
+            : (resetFormData(), resetOverlayMenuData())
+        }
+      >
         Cancel
       </button>
-      <button onClick={() => saveItem()}>Save Item</button>
+      <button onClick={() => saveItem()}>
+        {menuType === "edit-item" ? "Update Item" : "Save Item"}
+      </button>
       <input
         id="item-tag-input"
         name="tag"
