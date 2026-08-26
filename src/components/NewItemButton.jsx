@@ -7,6 +7,7 @@ const NewItemButton = ({ setOverlayMenuData }) => {
           ...prevData,
           menuVisibility: true,
           menuType: "new-item",
+          menuItem: "",
         }))
       }
     >

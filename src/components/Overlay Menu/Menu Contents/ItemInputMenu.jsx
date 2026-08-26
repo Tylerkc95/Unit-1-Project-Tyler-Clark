@@ -11,6 +11,7 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
     tag: "",
     action: "",
     description: "",
+    error: false,
   });
 
   // Attempted to create a handler function to esaily update the values within overlayMenuData state;
@@ -41,6 +42,8 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
         action: currentItem.action,
         description: currentItem.description,
       }));
+    } else if (menuType === "new-item") {
+      resetFormData();
     }
     console.log("useEffect");
   }, [overlayMenuData]);
@@ -75,11 +78,19 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
   };
 
   const saveItem = () => {
+    if (formData.name === "") {
+      return setFormData((prevData) => ({ ...prevData, error: true }));
+    } else {
+      setFormData((prevData) => ({ ...prevData, error: false }));
+    }
+
+    const progress = formData.progress === "" ? "To-Do" : formData.progress;
+
     const itemDetails = [
       formData.name,
       formData.name, //repeated for image filepath
       formData.project,
-      formData.progress,
+      progress,
       formData.tag,
       formData.action,
       formData.description,
@@ -104,6 +115,7 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
 
   return (
     <div className="overlay-menu">
+      {formData.error && <span>Item must have a name!</span>}
       <input
         id="item-name-input"
         name="name"
