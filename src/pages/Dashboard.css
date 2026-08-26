@@ -74,6 +74,7 @@
   columns: 2;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
 }
 
 .overlay-alert {
@@ -84,9 +85,10 @@
   padding: 0.5rem;
   border-radius: 2%;
   background-color: var(--overlay-alert);
-  font-size: 5rem;
+  font-size: 2rem;
   justify-content: center;
   align-content: center;
   display: block;
   columns: 2;
+  overflow-y: auto;
 }

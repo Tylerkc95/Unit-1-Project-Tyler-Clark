@@ -13,6 +13,22 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
     description: "",
   });
 
+  // Attempted to create a handler function to esaily update the values within overlayMenuData state;
+  // received an error after second use that "a component is changing a controlled input to be uncontrolled..."
+  // const handleOverlayMenuData = (menuVisibility, menuType, menuItem) => {
+  //   (setOverlayMenuData((prevData) => ({
+  //     ...prevData,
+  //     menuVisibility: menuVisibility,
+  //     menuType: menuType,
+  //     menuItem: menuItem,
+  //   })),
+  //     console.log(
+  //       overlayMenuData.menuVisibility,
+  //       overlayMenuData.menuType,
+  //       overlayMenuData.menuItem,
+  //     ));
+  // };
+
   // Runs once on render to determine if the form should be preloaded with the selected item's details, and again if the type changes
   useEffect(() => {
     if (menuType === "edit-item") {
@@ -124,6 +140,9 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
       <button onClick={() => saveItem()}>
         {menuType === "edit-item" ? "Update Item" : "Save Item"}
       </button>
+      {/* <button onClick={() => handleOverlayMenuData(true, "item-details", "")}>
+        Test Button
+      </button> */}
       <input
         id="item-tag-input"
         name="tag"

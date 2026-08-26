@@ -1,6 +1,11 @@
 import { items } from "../../../data/item-data";
 
-const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
+const ItemDetailsMenu = ({
+  overlayMenuData,
+  setOverlayMenuData,
+  overlayAlertData,
+  setOverlayAlertData,
+}) => {
   let item = overlayMenuData.menuItem;
   return (
     <div className="overlay-menu">
@@ -31,13 +36,12 @@ const ItemDetailsMenu = ({ overlayMenuData, setOverlayMenuData }) => {
       </button>
       <button
         onClick={() => (
-          items.splice(items.indexOf(item), 1),
-          setOverlayMenuData((prevData) => ({
+          setOverlayAlertData((prevData) => ({
             ...prevData,
-            menuVisibility: false,
-            menuType: "",
-            menuItem: "",
-          }))
+            alertVisibility: true,
+            alertType: "delete-item",
+          })),
+          console.log("Delete button works")
         )}
       >
         Delete Item

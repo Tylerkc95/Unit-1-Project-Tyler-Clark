@@ -4,13 +4,19 @@ import "./Dashboard.css";
 import { items } from "../data/item-data.js";
 import NewItemButton from "../components/NewItemButton.jsx";
 import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
-import OverlayAlert from "../components/OverlayAlert.jsx";
+import OverlayAlert from "../components/Overlay Alert/OverlayAlert.jsx";
 
 const Dashboard = () => {
   const [overlayMenuData, setOverlayMenuData] = useState({
     menuVisibility: false,
     menuType: "",
     menuItem: "",
+  });
+
+  const [overlayAlertData, setOverlayAlertData] = useState({
+    alertVisibility: false,
+    alertType: "",
+    alertItem: "",
   });
 
   return (
@@ -34,10 +40,19 @@ const Dashboard = () => {
         <OverlayMenu
           overlayMenuData={overlayMenuData}
           setOverlayMenuData={setOverlayMenuData}
+          overlayAlertData={overlayAlertData}
+          setOverlayAlertData={setOverlayAlertData}
         />
       )}
 
-      {/* <OverlayAlert/> */}
+      {overlayAlertData.alertVisibility && (
+        <OverlayAlert
+          overlayMenuData={overlayMenuData}
+          setOverlayMenuData={setOverlayMenuData}
+          overlayAlertData={overlayAlertData}
+          setOverlayAlertData={setOverlayAlertData}
+        />
+      )}
 
       <main id="view-pane" className="pane">
         {items.length == 0
