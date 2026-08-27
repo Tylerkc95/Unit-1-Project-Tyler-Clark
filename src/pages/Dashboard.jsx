@@ -5,6 +5,7 @@ import { items } from "../data/item-data.js";
 import NewItemButton from "../components/NewItemButton.jsx";
 import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/Overlay Alert/OverlayAlert.jsx";
+import { Routes, Route, Link } from "react-router";
 
 const Dashboard = () => {
   const [overlayMenuData, setOverlayMenuData] = useState({
@@ -22,7 +23,9 @@ const Dashboard = () => {
   return (
     <div id="dashboard-page">
       <div id="sidebar" className="pane">
-        <header>dwindle</header>
+        <header>
+          <Link to="/">dwindle </Link>
+        </header>
         <input id="search-bar" placeholder="Search..."></input>
         <hr />
         <span>View by:</span>
@@ -34,6 +37,7 @@ const Dashboard = () => {
           <option value="all-items">All Items</option>
         </select>
         <hr />
+        <Link to="/about"><img src={"../src/images/gear-solid-full.svg"} /></Link>
       </div>
 
       {overlayMenuData.menuVisibility && (
