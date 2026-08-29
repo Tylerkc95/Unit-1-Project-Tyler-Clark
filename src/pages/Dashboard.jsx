@@ -6,6 +6,7 @@ import NewItemButton from "../components/NewItemButton.jsx";
 import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/Overlay Alert/OverlayAlert.jsx";
 import { Routes, Route, Link } from "react-router";
+import SearchContainer from "../components/SearchContainer.jsx";
 
 const Dashboard = () => {
   const [overlayMenuData, setOverlayMenuData] = useState({
@@ -40,10 +41,9 @@ const Dashboard = () => {
     <div id="dashboard-page">
       <div id="sidebar" className="pane">
         <header>
-          {/* <h2>{JSON.stringify(itemData)}</h2> */}
           <Link to="/">dwindle </Link>
         </header>
-        <input id="search-bar" placeholder="Search..."></input>
+        <SearchContainer />
         <hr />
         <span>View by:</span>
         <select id="view-by-dropdown">
