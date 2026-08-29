@@ -6,8 +6,16 @@ const DeleteItemAlert = ({
   setOverlayMenuData,
   overlayAlertData,
   setOverlayAlertData,
+  itemData,
+  setItemData,
 }) => {
   const currentItem = overlayMenuData.menuItem;
+
+  function deleteItem() {
+    setItemData((prevData) =>
+      prevData.toSpliced(prevData.indexOf(currentItem), 1),
+    );
+  }
 
   return (
     <div className="overlay-alert">
@@ -24,7 +32,7 @@ const DeleteItemAlert = ({
       </button>
       <button
         onClick={() => (
-          items.splice(items.indexOf(currentItem), 1),
+          deleteItem(),
           setOverlayAlertData((prevData) => ({
             ...prevData,
             alertVisibility: false,

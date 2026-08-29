@@ -6,6 +6,8 @@ const OverlayMenu = ({
   setOverlayMenuData,
   overlayAlertData,
   setOverlayAlertData,
+  itemData,
+  setItemData,
 }) => {
   const menuType = overlayMenuData.menuType;
 
@@ -26,6 +28,8 @@ const OverlayMenu = ({
       <ItemInputMenu
         overlayMenuData={overlayMenuData}
         setOverlayMenuData={setOverlayMenuData}
+        itemData={itemData}
+        setItemData={setItemData}
       />
     );
   }

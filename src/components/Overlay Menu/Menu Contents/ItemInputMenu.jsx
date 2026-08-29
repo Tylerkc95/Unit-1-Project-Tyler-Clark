@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
-import { Item, items } from "../../../data/item-data";
+import { Item } from "../../../data/item-data";
 
-const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
+const ItemInputMenu = ({
+  overlayMenuData,
+  setOverlayMenuData,
+  itemData,
+  setItemData,
+}) => {
   const menuType = overlayMenuData.menuType;
   const currentItem = overlayMenuData.menuItem;
   const [formData, setFormData] = useState({
@@ -13,22 +18,6 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
     description: "",
     error: false,
   });
-
-  // Attempted to create a handler function to esaily update the values within overlayMenuData state;
-  // received an error after second use that "a component is changing a controlled input to be uncontrolled..."
-  // const handleOverlayMenuData = (menuVisibility, menuType, menuItem) => {
-  //   (setOverlayMenuData((prevData) => ({
-  //     ...prevData,
-  //     menuVisibility: menuVisibility,
-  //     menuType: menuType,
-  //     menuItem: menuItem,
-  //   })),
-  //     console.log(
-  //       overlayMenuData.menuVisibility,
-  //       overlayMenuData.menuType,
-  //       overlayMenuData.menuItem,
-  //     ));
-  // };
 
   // Runs once on render to determine if the form should be preloaded with the selected item's details, and again if the type changes
   useEffect(() => {
@@ -78,6 +67,7 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
   };
 
   const saveItem = () => {
+    // Validates that a name has been entered
     if (formData.name === "") {
       return setFormData((prevData) => ({ ...prevData, error: true }));
     } else {
@@ -98,10 +88,14 @@ const ItemInputMenu = ({ overlayMenuData, setOverlayMenuData }) => {
 
     const itemToSave = new Item(...itemDetails);
 
+    console.log(...itemDetails);
+
     if (menuType === "new-item") {
-      items.push(itemToSave);
+      setItemData((prevItems) => [...prevItems, itemToSave]);
     } else if (menuType === "edit-item") {
-      items.splice(items.indexOf(currentItem), 1, itemToSave);
+      setItemData((prevItems) =>
+        prevItems.toSpliced(prevItems.indexOf(currentItem), 1, itemToSave),
+      );
     }
 
     setOverlayMenuData((prevData) => ({

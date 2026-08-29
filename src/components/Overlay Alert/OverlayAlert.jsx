@@ -6,6 +6,8 @@ const OverlayAlert = ({
   setOverlayMenuData,
   overlayAlertData,
   setOverlayAlertData,
+  itemData,
+  setItemData,
 }) => {
   const alertType = overlayAlertData.alertType;
 
@@ -17,6 +19,8 @@ const OverlayAlert = ({
         setOverlayMenuData={setOverlayMenuData}
         overlayAlertData={overlayAlertData}
         setOverlayAlertData={setOverlayAlertData}
+        itemData={itemData}
+        setItemData={setItemData}
       />
     );
   }
