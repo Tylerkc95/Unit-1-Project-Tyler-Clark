@@ -28,9 +28,9 @@ const SearchContainer = ({ setOverlayMenuData, itemData }) => {
           ? null
           : isResultsEmpty
             ? "No items match your search"
-            : searchResults.map((item) => (
+            : searchResults.map((item, index) => (
                 <li
-                  key={item.name}
+                  key={item.name + index}
                   onClick={() => (
                     setOverlayMenuData((prevData) => ({
                       ...prevData,

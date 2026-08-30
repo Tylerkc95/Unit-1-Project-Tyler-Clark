@@ -7,6 +7,7 @@ import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/Overlay Alert/OverlayAlert.jsx";
 import { Routes, Route, Link } from "react-router";
 import SearchContainer from "../components/SearchContainer.jsx";
+import ListViewContainer from "../components/ListViewContainer.jsx";
 
 const Dashboard = () => {
   const [overlayMenuData, setOverlayMenuData] = useState({
@@ -48,14 +49,10 @@ const Dashboard = () => {
           itemData={itemData}
         />
         <hr />
-        <span>View by:</span>
-        <select id="view-by-dropdown">
-          <option value="project">Project</option>
-          <option value="tag">Tag</option>
-          <option value="action">Action</option>
-          <option value="progress">Progress</option>
-          <option value="all-items">All Items</option>
-        </select>
+        <ListViewContainer
+          setOverlayMenuData={setOverlayMenuData}
+          itemData={itemData}
+        />
         <hr />
         <Link to="/about">
           <img src={"../src/images/gear-solid-full.svg"} />
