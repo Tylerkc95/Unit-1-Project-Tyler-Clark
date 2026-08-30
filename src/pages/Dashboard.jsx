@@ -43,7 +43,10 @@ const Dashboard = () => {
         <header>
           <Link to="/">dwindle </Link>
         </header>
-        <SearchContainer />
+        <SearchContainer
+          setOverlayMenuData={setOverlayMenuData}
+          itemData={itemData}
+        />
         <hr />
         <span>View by:</span>
         <select id="view-by-dropdown">

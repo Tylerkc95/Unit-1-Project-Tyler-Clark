@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-const SearchContainer = () => {
-  const mockData = ["TV", "Barstools", "Desk Fan"];
-
+const SearchContainer = ({ setOverlayMenuData, itemData }) => {
   const [query, setQuery] = useState("");
 
   const searchResults =
     query.trim().length !== 0
-      ? mockData.filter((item) =>
-          item.trim().toLowerCase().includes(query.trim().toLowerCase()),
+      ? itemData.filter((item) =>
+          item.name.trim().toLowerCase().includes(query.trim().toLowerCase()),
         )
       : [];
 
@@ -19,6 +17,7 @@ const SearchContainer = () => {
     <div>
       <input
         id="search-bar"
+        value={query}
         onChange={(e) => {
           setQuery(e.target.value);
         }}
@@ -29,7 +28,22 @@ const SearchContainer = () => {
           ? null
           : isResultsEmpty
             ? "No items match your search"
-            : searchResults.map((item) => <li key={item}>{item}</li>)}
+            : searchResults.map((item) => (
+                <li
+                  key={item.name}
+                  onClick={() => (
+                    setOverlayMenuData((prevData) => ({
+                      ...prevData,
+                      menuVisibility: true,
+                      menuType: "item-details",
+                      menuItem: item,
+                    })),
+                    setQuery("")
+                  )}
+                >
+                  {item.name}
+                </li>
+              ))}
       </div>
     </div>
   );
