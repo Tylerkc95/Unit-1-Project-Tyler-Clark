@@ -1,19 +1,8 @@
 import "./ItemCard.css";
 
-const ItemCard = ({ item, setOverlayMenuData }) => {
+const ItemCard = ({ item, onClick }) => {
   return (
-    <div
-      id={`${item.name}-card`}
-      className="item-card"
-      onClick={() =>
-        setOverlayMenuData((prevData) => ({
-          ...prevData,
-          menuVisibility: true,
-          menuType: "item-details",
-          menuItem: item,
-        }))
-      }
-    >
+    <div id={`${item.name}-card`} className="item-card" onClick={onClick}>
       <img
         id={`${item.name}-pic`}
         className="item-pic"
