@@ -41,9 +41,9 @@ const Dashboard = () => {
   return (
     <div id="dashboard-page">
       <div id="sidebar" className="pane">
-        <header>
+        <h1>
           <Link to="/">dwindle </Link>
-        </header>
+        </h1>
         <SearchContainer
           setOverlayMenuData={setOverlayMenuData}
           itemData={itemData}
