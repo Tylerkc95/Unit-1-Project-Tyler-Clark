@@ -9,6 +9,7 @@ const ItemDetailsMenu = ({
   let item = overlayMenuData.menuItem;
   return (
     <div className="overlay-menu">
+      <img src={item.image}/>
       <span>Name: {item.name}</span>
       <span>Project: {item.project}</span>
       <span>Progress: {item.progress}</span>

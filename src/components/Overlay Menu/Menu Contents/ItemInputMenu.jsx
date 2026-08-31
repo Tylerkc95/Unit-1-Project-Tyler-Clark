@@ -4,7 +4,7 @@ import { Item } from "../../../data/item-data";
 const ItemInputMenu = ({
   overlayMenuData,
   setOverlayMenuData,
-  itemData,
+  // itemData,
   setItemData,
 }) => {
   const menuType = overlayMenuData.menuType;
@@ -16,6 +16,7 @@ const ItemInputMenu = ({
     tag: "",
     action: "",
     description: "",
+    image: "",
     error: false,
   });
 
@@ -30,6 +31,7 @@ const ItemInputMenu = ({
         tag: currentItem.tag,
         action: currentItem.action,
         description: currentItem.description,
+        image: currentItem.image,
       }));
     } else if (menuType === "new-item") {
       resetFormData();
@@ -54,6 +56,8 @@ const ItemInputMenu = ({
       tag: "",
       action: "",
       description: "",
+      image: "",
+      error: false,
     }));
   };
 
@@ -78,12 +82,12 @@ const ItemInputMenu = ({
 
     const itemDetails = [
       formData.name,
-      formData.name, //repeated for image filepath
       formData.project,
       progress,
       formData.tag,
       formData.action,
       formData.description,
+      formData.image,
     ];
 
     const itemToSave = new Item(...itemDetails);
@@ -107,8 +111,26 @@ const ItemInputMenu = ({
     console.log(currentItem);
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const fr = new FileReader();
+
+    fr.onload = () => {
+      setFormData((prevData) => ({ ...prevData, image: fr.result }));
+    };
+    fr.readAsDataURL(file);
+  };
+
   return (
     <div className="overlay-menu">
+      <input
+        type="file"
+        name="image-upload"
+        // value={formData.image}
+        onChange={handleImageUpload}
+      />
+      <img src={formData.image} />
       {formData.error && <span>Item must have a name!</span>}
       <input
         id="item-name-input"
@@ -146,9 +168,6 @@ const ItemInputMenu = ({
       <button onClick={() => saveItem()}>
         {menuType === "edit-item" ? "Update Item" : "Save Item"}
       </button>
-      {/* <button onClick={() => handleOverlayMenuData(true, "item-details", "")}>
-        Test Button
-      </button> */}
       <input
         id="item-tag-input"
         name="tag"

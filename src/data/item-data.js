@@ -1,12 +1,12 @@
 export class Item {
-  constructor(name, image, project, progress, tag, action, description) {
+  constructor(name, project, progress, tag, action, description, image) {
     this.name = name;
-    this.image = image;
     this.project = project;
     this.progress = progress;
     this.tag = tag;
     this.action = action;
     this.description = description;
+    this.image = image;
   }
 }
 

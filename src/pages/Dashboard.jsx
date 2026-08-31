@@ -69,6 +69,7 @@ const Dashboard = () => {
           viewType="list"
         />
         <hr />
+        
         <Link to="/about">
           <img src={"../src/images/gear-solid-full.svg"} />
         </Link>

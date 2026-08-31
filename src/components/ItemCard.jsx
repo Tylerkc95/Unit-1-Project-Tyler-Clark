@@ -6,7 +6,7 @@ const ItemCard = ({ item, onClick }) => {
       <img
         id={`${item.name}-pic`}
         className="item-pic"
-        src={`../src/images/${item.image}.jpg`}
+        src={item.image}
         alt={`Picture of ${item.name}.`}
       />
       <h2>{item.name}</h2>
