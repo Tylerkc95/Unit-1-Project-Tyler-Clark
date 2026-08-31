@@ -66,7 +66,7 @@ const Dashboard = () => {
           setOverlayMenuData={setOverlayMenuData}
           itemData={itemData}
           viewBy={viewBy}
-          viewType="list"
+          displayType="list"
         />
         <hr />
         
@@ -112,7 +112,7 @@ const Dashboard = () => {
             setOverlayMenuData={setOverlayMenuData}
             itemData={itemData}
             viewBy={viewBy}
-            viewType="card"
+            displayType="card"
           />
         )}
         <NewItemButton

@@ -16,7 +16,7 @@ const ItemInputMenu = ({
     tag: "",
     action: "",
     description: "",
-    image: "",
+    image: null,
     error: false,
   });
 
@@ -56,7 +56,7 @@ const ItemInputMenu = ({
       tag: "",
       action: "",
       description: "",
-      image: "",
+      image: null,
       error: false,
     }));
   };

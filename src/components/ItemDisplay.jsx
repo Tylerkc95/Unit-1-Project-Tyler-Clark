@@ -5,7 +5,7 @@ const ItemDisplay = ({
   setOverlayMenuData,
   itemData,
   viewBy,
-  viewType,
+  displayType,
 }) => {
   // Creates an array of the unique options for each item attribute (ie project, tag, etc.)
   const listOptions = (attribute) =>
@@ -15,13 +15,15 @@ const ItemDisplay = ({
       return optionsList;
     }, []);
 
+    console.log(listOptions("project"))
+
   // Small child components used throughout this parent component
   const CardHeader = ({ option }) => {
-    return <div>{option}</div>;
+    return <div>{option === "" ? `No ${viewBy} assigned` : option}</div>;
   };
 
   const ListHeader = ({ option, onClick }) => {
-    return <h3 onClick={onClick}>{option}</h3>;
+    return <h3 onClick={onClick}>{option === "" ? `No ${viewBy} assigned` : option}</h3>;
   };
 
   const ListItem = ({ item, onClick }) => {
@@ -30,8 +32,8 @@ const ItemDisplay = ({
 
   // Using Pascal Case when naming variables allows you to use them as components or custom HTML tags
   // These variables determine how to display the data; in list form or card form
-  const CategoryElement = viewType === "list" ? ListHeader : CardHeader;
-  const ItemElement = viewType === "list" ? ListItem : ItemCard;
+  const CategoryElement = displayType === "list" ? ListHeader : CardHeader;
+  const ItemElement = displayType === "list" ? ListItem : ItemCard;
 
   return (
     <div>
