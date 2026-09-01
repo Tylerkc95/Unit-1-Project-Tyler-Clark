@@ -1,0 +1,50 @@
+#about-page {
+  position: fixed;
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 100%;
+}
+
+#about-title {
+  font-size: 8rem;
+  display: flex;
+  justify-content: center;
+}
+
+#about-page-header {
+  display: flex;
+  justify-content: center;
+}
+
+#about-main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+}
+
+#about-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  padding: 3rem;
+  gap: 2rem;
+  left: 36%;
+  width: 35rem;
+}
+
+#about-buttons {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+  gap: 2rem;
+}
+
+#footer-about {
+  text-align: center;
+  justify-content: center;
+  bottom: 0%;
+  left: 50%;
+  position: fixed;
+}

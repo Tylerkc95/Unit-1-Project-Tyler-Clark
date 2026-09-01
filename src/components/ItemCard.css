@@ -1,0 +1,21 @@
+.item-card {
+  background-color: var(--item-card);
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 5%;
+  transform: scale(1, 1);
+  transition: 0.2s ease-out;
+  width: 15rem;
+  font-size: 1rem;
+}
+
+.item-card:hover {
+  transform: scale(1.05, 1.05);
+  transition: 0.2s ease-out;
+  cursor: pointer;
+}
+
+.item-pic {
+  max-width: 80%;
+  max-height: auto;
+}
