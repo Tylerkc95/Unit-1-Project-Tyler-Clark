@@ -125,7 +125,7 @@ const ItemInputMenu = ({
         // value={formData.image}
         onChange={handleImageUpload}
       />
-      <img src={formData.image} />
+      <img src={formData.image} alt="Image upload preview" />
       {formData.error && <span>Item must have a name!</span>}
       <input
         id="item-name-input"

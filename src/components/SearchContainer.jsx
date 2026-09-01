@@ -15,14 +15,26 @@ const SearchContainer = ({ setOverlayMenuData, itemData }) => {
 
   return (
     <div>
-      <input
-        id="search-bar"
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-        }}
-        placeholder="Search..."
-      ></input>
+      <div id="search-bar">
+        <input
+          id="search-bar-input"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+          placeholder="Search..."
+        ></input>
+        <img
+          id="search-bar-icon"
+          src={
+            isQueryEmpty
+              ? "../src/images/magnifying-glass-solid-full.svg"
+              : "../src/images/x-solid-full.svg"
+          }
+          onClick={() => (isQueryEmpty ? null : setQuery(""))}
+          alt="Search bar icon"
+        />
+      </div>
       <div id="search-dropdown">
         {isQueryEmpty
           ? null
@@ -31,6 +43,7 @@ const SearchContainer = ({ setOverlayMenuData, itemData }) => {
             : searchResults.map((item, index) => (
                 <li
                   key={item.name + index}
+                  className="search-result"
                   onClick={() => (
                     setOverlayMenuData((prevData) => ({
                       ...prevData,

@@ -1,5 +1,6 @@
 import ItemCard from "./ItemCard";
 import "./ItemCard.css";
+import "../pages/Dashboard.css";
 
 const ItemDisplay = ({ setOverlayMenuData, itemData, viewBy, displayType }) => {
   // Creates an array of the unique options for each item attribute (ie project, tag, etc.)
@@ -12,7 +13,11 @@ const ItemDisplay = ({ setOverlayMenuData, itemData, viewBy, displayType }) => {
 
   // Small child components used throughout this parent component
   const CardHeader = ({ option }) => {
-    return <div>{option === "" ? `No ${viewBy} assigned` : option}</div>;
+    return (
+      <div className="card-header">
+        {option === "" ? `No ${viewBy} assigned` : option}
+      </div>
+    );
   };
 
   const ListHeader = ({ option, onClick }) => {
@@ -24,60 +29,67 @@ const ItemDisplay = ({ setOverlayMenuData, itemData, viewBy, displayType }) => {
   };
 
   const ListItem = ({ item, onClick }) => {
-    return <li onClick={onClick}>{item.name}</li>;
+    return <li className="list-item" onClick={onClick}>{item.name}</li>;
   };
 
   // Using Pascal Case when naming variables allows you to use them as components or custom HTML tags
   // These variables determine how to display the data; in list form or card form
+  const itemContainerClass =
+    displayType === "list" ? "list-container" : "card-container";
+  const groupContainerClass =
+    displayType === "list" ? "list-groupings" : "card-groupings";
   const CategoryElement = displayType === "list" ? ListHeader : CardHeader;
   const ItemElement = displayType === "list" ? ListItem : ItemCard;
 
-  return (
-    <div>
-      <div>
-        {viewBy === "all-items"
-          ? itemData.map((item, index) => (
-              <ItemElement
-                key={item.name + index}
-                item={item}
-                onClick={() =>
-                  setOverlayMenuData((prevData) => ({
-                    ...prevData,
-                    menuVisibility: true,
-                    menuType: "item-details",
-                    menuItem: item,
-                  }))
-                }
-              >
-                {item.name}
-              </ItemElement>
-            ))
-          : listOptions(viewBy).map((option, index) => (
-              <div key={option + index}>
-                <CategoryElement option={option} />
-                <ul>
-                  {itemData
-                    .filter((item) => item[viewBy] === option)
-                    .map((item, index) => (
-                      <ItemElement
-                        key={item.name + index}
-                        item={item}
-                        onClick={() =>
-                          setOverlayMenuData((prevData) => ({
-                            ...prevData,
-                            menuVisibility: true,
-                            menuType: "item-details",
-                            menuItem: item,
-                          }))
-                        }
-                      />
-                    ))}
-                </ul>
-              </div>
-            ))}
+  if (viewBy === "all-items") {
+    return (
+      <div className={itemContainerClass}>
+        {itemData.map((item, index) => (
+          <ItemElement
+            key={item.name + index}
+            item={item}
+            onClick={() =>
+              setOverlayMenuData((prevData) => ({
+                ...prevData,
+                menuVisibility: true,
+                menuType: "item-details",
+                menuItem: item,
+              }))
+            }
+          >
+            {item.name}
+          </ItemElement>
+        ))}
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        {listOptions(viewBy).map((option, index) => (
+          <div key={option + index} className={groupContainerClass}>
+            <CategoryElement option={option} />
+            <ul className={itemContainerClass}>
+              {itemData
+                .filter((item) => item[viewBy] === option)
+                .map((item, index) => (
+                  <ItemElement
+                    key={item.name + index}
+                    item={item}
+                    onClick={() =>
+                      setOverlayMenuData((prevData) => ({
+                        ...prevData,
+                        menuVisibility: true,
+                        menuType: "item-details",
+                        menuItem: item,
+                      }))
+                    }
+                  ></ItemElement>
+                ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    );
+  }
 };
-
 export default ItemDisplay;

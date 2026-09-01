@@ -21,46 +21,50 @@ const Sidebar = ({ setOverlayMenuData, itemData, viewBy, setViewBy }) => {
             itemData={itemData}
           />
           <hr />
-          <span>View by:</span>
-          <select
-            id="view-by-dropdown"
-            onChange={(e) => {
-              setViewBy(e.target.value);
-            }}
-          >
-            <option value="all-items">All Items</option>
-            <option value="project">Project</option>
-            <option value="tag">Tag</option>
-            <option value="action">Action</option>
-            <option value="progress">Progress</option>
-          </select>
-          <ItemDisplay
-            setOverlayMenuData={setOverlayMenuData}
-            itemData={itemData}
-            viewBy={viewBy}
-            displayType="list"
-          />
+          <div id="list-view-container">
+            <span>View by:</span>
+            <select
+              id="view-by-dropdown"
+              onChange={(e) => {
+                setViewBy(e.target.value);
+              }}
+            >
+              <option value="all-items">All Items</option>
+              <option value="project">Project</option>
+              <option value="tag">Tag</option>
+              <option value="action">Action</option>
+              <option value="progress">Progress</option>
+            </select>
+            <ItemDisplay
+              setOverlayMenuData={setOverlayMenuData}
+              itemData={itemData}
+              viewBy={viewBy}
+              displayType="list"
+            />
+          </div>
           <hr />
         </main>
       ) : (
         sidebarType === "settings" && (
           <Link to="/about">
-            <div>About</div>
+            <button>About</button>
           </Link>
         )
       )}
 
       {sidebarType === "item-nav" ? (
         <img
+          id="settings-button"
           src={"../src/images/gear-solid-full.svg"}
           onClick={() => setSidebarType("settings")}
+          alt="Settings icon"
         />
       ) : (
         sidebarType === "settings" && (
           <button onClick={() => setSidebarType("item-nav")}>Back</button>
         )
       )}
-      <footer>© Tyler Clark 2026</footer>
+      <footer id="footer-dashboard">© Tyler Clark 2026</footer>
     </div>
   );
 };

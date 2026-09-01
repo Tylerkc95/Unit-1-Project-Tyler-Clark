@@ -5,10 +5,13 @@
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 5%;
-  grid-column: 1 / span 3;
+  /* grid-column: 1 / span 3; */
   /* grid-row: 1 / span 2; */
   transform: scale(1, 1);
   transition: 0.2s ease-out;
+  width: 15rem;
+  /* margin: 1rem; */
+  font-size: 1rem;
 }
 
 .item-card:hover {
