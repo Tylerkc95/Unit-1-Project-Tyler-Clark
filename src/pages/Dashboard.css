@@ -5,7 +5,7 @@
   --primary-color: #ffd8a8;
   --accent-color: #fd7e14;
   --item-card: lightgray;
-  --overlay-menu: gray;
+  --overlay-menu: lightgray;
   --overlay-alert: slategray;
 }
 
@@ -27,9 +27,6 @@
   flex-direction: column;
   gap: 20px;
   overflow-y: auto;
-}
-
-#sidebar {
   align-content: space-evenly;
 }
 
@@ -40,7 +37,7 @@
   background-color: white;
   gap: 5px;
   overflow-y: auto;
- }
+}
 
 #new-item-button {
   width: 75px;
@@ -60,21 +57,62 @@
 }
 
 .overlay-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-content: space-between;
   z-index: 3;
-  position: absolute;
+  position: fixed;
   inset: 10%;
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 2%;
   background-color: var(--overlay-menu);
   font-size: 2rem;
-  justify-content: center;
-  align-content: center;
-  display: flex;
-  columns: 2;
-  flex-direction: column;
-  gap: 20px;
+  /* justify-content: center;
+  align-content: center; */
+  /* display: flex;
+  gap: 20px; */
   overflow-y: auto;
+  height: fit-content;
+}
+
+.overlay-item-pic {
+  height: 15rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.overlay-left {
+  height: fit-content;
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  /* grid-template-rows: repeat(5,0.3fr); */
+  gap: 1rem;
+}
+
+.overlay-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.overlay-right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-content: flex-end; */
+  gap: 1rem;
+  font-size: clamp(2rem, 1cqi, 3rem);
+}
+
+.overlay-backdrop {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  background-color: black;
+  opacity: 50%;
+  z-index: 3;
 }
 
 .overlay-alert {
@@ -100,6 +138,36 @@
   gap: 30px 30px;
   justify-content: space-between;
   align-content: space-between;
+}
+
+@media screen and (max-width: 1350px) {
+  .card-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .card-container {
+    display: none;
+  }
+  #sidebar {
+    width: 100%;
+  }
+  #new-item-button {
+    background-color: var(--accent-color);
+  }
 }
 
 .card-groupings {
@@ -173,7 +241,9 @@ hr {
 header {
   color: black;
   cursor: default;
-  font-size: 3rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 :visited {

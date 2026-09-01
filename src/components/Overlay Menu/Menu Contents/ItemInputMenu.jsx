@@ -118,75 +118,88 @@ const ItemInputMenu = ({
   };
 
   return (
-    <div className="overlay-menu">
-      <input
-        type="file"
-        name="image-upload"
-        // value={formData.image}
-        onChange={handleImageUpload}
-      />
-      <img src={formData.image} alt="Image upload preview" />
-      {formData.error && <span>Item must have a name!</span>}
-      <input
-        id="item-name-input"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Item name..."
-      ></input>
-      <input
-        id="item-project-input"
-        name="project"
-        value={formData.project}
-        onChange={handleChange}
-        placeholder="Project..."
-      ></input>
-      <input
-        id="item-progress-input"
-        name="progress"
-        value={formData.progress}
-        onChange={handleChange}
-        placeholder="Progress..."
-      ></input>
-      <button
-        onClick={() =>
-          menuType === "edit-item"
-            ? setOverlayMenuData((prevData) => ({
-                ...prevData,
-                menuType: "item-details",
-              }))
-            : (resetFormData(), resetOverlayMenuData())
-        }
-      >
-        Cancel
-      </button>
-      <button onClick={() => saveItem()}>
-        {menuType === "edit-item" ? "Update Item" : "Save Item"}
-      </button>
-      <input
-        id="item-tag-input"
-        name="tag"
-        value={formData.tag}
-        onChange={handleChange}
-        placeholder="Tags..."
-      ></input>
-      <input
-        id="item-action-input"
-        name="action"
-        value={formData.action}
-        onChange={handleChange}
-        placeholder="Actions..."
-      ></input>
-      <textarea
-        id="item-description-input"
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        placeholder="Item Description..."
-        rows="5"
-        cols="30"
-      ></textarea>
-    </div>
+    <>
+      <div className="overlay-backdrop"></div>
+      <div className="overlay-menu">
+        <div className="overlay-left">
+          <input
+            type="file"
+            name="image-upload"
+            // value={formData.image}
+            onChange={handleImageUpload}
+          />
+          <img
+            className="overlay-item-pic"
+            src={formData.image}
+            alt="Image upload preview"
+          />
+          {formData.error && <span>Item must have a name!</span>}
+          <input
+            id="item-name-input"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Item name..."
+          ></input>
+          <input
+            id="item-project-input"
+            name="project"
+            value={formData.project}
+            onChange={handleChange}
+            placeholder="Project..."
+          ></input>
+          <input
+            id="item-progress-input"
+            name="progress"
+            value={formData.progress}
+            onChange={handleChange}
+            placeholder="Progress..."
+          ></input>
+          <div className="overlay-buttons">
+            <button
+              onClick={() =>
+                menuType === "edit-item"
+                  ? setOverlayMenuData((prevData) => ({
+                      ...prevData,
+                      menuType: "item-details",
+                    }))
+                  : (resetFormData(), resetOverlayMenuData())
+              }
+            >
+              Cancel
+            </button>
+            <button onClick={() => saveItem()}>
+              {menuType === "edit-item" ? "Update Item" : "Save Item"}
+            </button>
+          </div>
+        </div>
+        <div className="overlay-right">
+          <input
+            id="item-tag-input"
+            name="tag"
+            value={formData.tag}
+            onChange={handleChange}
+            placeholder="Tags..."
+          ></input>
+          <input
+            id="item-action-input"
+            name="action"
+            value={formData.action}
+            onChange={handleChange}
+            placeholder="Actions..."
+          ></input>
+          <textarea
+            id="item-description-input"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            placeholder="Item Description..."
+            rows="5"
+            cols="30"
+          ></textarea>
+        </div>
+      </div>
+    </>
   );
 };
 
