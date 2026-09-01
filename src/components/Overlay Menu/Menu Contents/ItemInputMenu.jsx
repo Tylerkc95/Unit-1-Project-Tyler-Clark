@@ -4,7 +4,6 @@ import { Item } from "../../../data/item-data";
 const ItemInputMenu = ({
   overlayMenuData,
   setOverlayMenuData,
-  // itemData,
   setItemData,
 }) => {
   const menuType = overlayMenuData.menuType;
@@ -125,7 +124,7 @@ const ItemInputMenu = ({
           <input
             type="file"
             name="image-upload"
-            // value={formData.image}
+            accept="image/*"
             onChange={handleImageUpload}
           />
           <img

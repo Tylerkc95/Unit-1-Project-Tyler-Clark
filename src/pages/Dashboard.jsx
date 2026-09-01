@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import "./Dashboard.css";
-import { items } from "../data/item-data.js";
 import NewItemButton from "../components/NewItemButton.jsx";
 import OverlayMenu from "../components/Overlay Menu/OverlayMenu.jsx";
 import OverlayAlert from "../components/Overlay Alert/OverlayAlert.jsx";
-import { Routes, Route, Link } from "react-router";
-import SearchContainer from "../components/SearchContainer.jsx";
 import ItemDisplay from "../components/ItemDisplay.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 

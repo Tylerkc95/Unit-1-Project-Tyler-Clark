@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router";
+import { Link } from "react-router";
 import { useState } from "react";
 import SearchContainer from "./SearchContainer";
 import ItemDisplay from "./ItemDisplay";

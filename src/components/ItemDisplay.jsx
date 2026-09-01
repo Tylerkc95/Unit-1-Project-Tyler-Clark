@@ -29,15 +29,19 @@ const ItemDisplay = ({ setOverlayMenuData, itemData, viewBy, displayType }) => {
   };
 
   const ListItem = ({ item, onClick }) => {
-    return <li className="list-item" onClick={onClick}>{item.name}</li>;
+    return (
+      <li className="list-item" onClick={onClick}>
+        {item.name}
+      </li>
+    );
   };
 
-  // Using Pascal Case when naming variables allows you to use them as components or custom HTML tags
   // These variables determine how to display the data; in list form or card form
   const itemContainerClass =
     displayType === "list" ? "list-container" : "card-container";
   const groupContainerClass =
     displayType === "list" ? "list-groupings" : "card-groupings";
+  // Using Pascal Case when naming variables allows you to use them as components or custom HTML tags
   const CategoryElement = displayType === "list" ? ListHeader : CardHeader;
   const ItemElement = displayType === "list" ? ListItem : ItemCard;
 

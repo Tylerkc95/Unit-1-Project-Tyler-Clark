@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DeleteItemAlert from "./Alert Contents/DeleteItemAlert";
 
 const OverlayAlert = ({
@@ -29,28 +28,32 @@ const OverlayAlert = ({
         setItemData={setItemData}
       />
     );
+    // Overlay alert contents if user tries to upload an image that's too large
   } else if (alertType === "storage-limit-reached") {
     return (
       <>
+        <div className="overlay-backdrop"></div>
         <div className="overlay-alert">
           Local storage limit exceeded. Item not saved.
-          <button
-            onClick={() => (
-              setOverlayAlertData((prevData) => ({
-                ...prevData,
-                alertVisibility: false,
-                alertType: "",
-              })),
-              setOverlayMenuData((prevData) => ({
-                ...prevData,
-                menuVisibility: false,
-                menuType: "",
-              })),
-              deleteItem()
-            )}
-          >
-            Okay
-          </button>
+          <div className="overlay-alert-buttons">
+            <button
+              onClick={() => (
+                setOverlayAlertData((prevData) => ({
+                  ...prevData,
+                  alertVisibility: false,
+                  alertType: "",
+                })),
+                setOverlayMenuData((prevData) => ({
+                  ...prevData,
+                  menuVisibility: false,
+                  menuType: "",
+                })),
+                deleteItem()
+              )}
+            >
+              Okay
+            </button>
+          </div>
         </div>
       </>
     );

@@ -1,9 +1,6 @@
-import { items } from "../../../data/item-data";
-
 const ItemDetailsMenu = ({
   overlayMenuData,
   setOverlayMenuData,
-  overlayAlertData,
   setOverlayAlertData,
 }) => {
   let item = overlayMenuData.menuItem;

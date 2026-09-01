@@ -1,16 +1,11 @@
 .item-card {
-  /* max-width: 20%;
-  max-height: 80%; */
   background-color: var(--item-card);
   border: 1px solid black;
   padding: 0.5rem;
   border-radius: 5%;
-  /* grid-column: 1 / span 3; */
-  /* grid-row: 1 / span 2; */
   transform: scale(1, 1);
   transition: 0.2s ease-out;
   width: 15rem;
-  /* margin: 1rem; */
   font-size: 1rem;
 }
 
@@ -19,8 +14,6 @@
   transition: 0.2s ease-out;
   cursor: pointer;
 }
-
-/* .item-card: */
 
 .item-pic {
   max-width: 80%;

@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router";
+import { Link } from "react-router";
 import "./Home.css";
 
 const Home = () => {

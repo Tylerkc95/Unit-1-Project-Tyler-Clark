@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router";
+import { Link } from "react-router";
 import "./About.css";
 
 const About = () => {
@@ -10,7 +10,7 @@ const About = () => {
             <Link to="/">dwindle </Link>
           </h2>
         </header>
-        <h1>About</h1>
+        <h1 id="about-page-header">About</h1>
 
         <main id="about-main">
           <div id="about-content">
