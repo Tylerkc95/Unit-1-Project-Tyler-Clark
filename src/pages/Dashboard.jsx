@@ -7,6 +7,7 @@ import OverlayAlert from "../components/Overlay Alert/OverlayAlert.jsx";
 import { Routes, Route, Link } from "react-router";
 import SearchContainer from "../components/SearchContainer.jsx";
 import ItemDisplay from "../components/ItemDisplay.jsx";
+import Sidebar from "../components/Sidebar.jsx";
 
 const Dashboard = () => {
   const [overlayMenuData, setOverlayMenuData] = useState({
@@ -51,47 +52,12 @@ const Dashboard = () => {
 
   return (
     <div id="dashboard-page">
-      <div id="sidebar" className="pane">
-        <h1>
-          <Link to="/">dwindle </Link>
-        </h1>
-        <SearchContainer
-          setOverlayMenuData={setOverlayMenuData}
-          itemData={itemData}
-        />
-        <hr />
-        <span>View by:</span>
-        <select
-          id="view-by-dropdown"
-          onChange={(e) => {
-            setViewBy(e.target.value);
-          }}
-        >
-          <option value="all-items">All Items</option>
-          <option value="project">Project</option>
-          <option value="tag">Tag</option>
-          <option value="action">Action</option>
-          <option value="progress">Progress</option>
-        </select>
-        <ItemDisplay
-          setOverlayMenuData={setOverlayMenuData}
-          itemData={itemData}
-          viewBy={viewBy}
-          displayType="list"
-        />
-        <hr />
-
-        <Link to="/about">
-          <img src={"../src/images/gear-solid-full.svg"} />
-        </Link>
-        <button
-          onClick={() =>
-            localStorage.setItem("itemData", JSON.stringify(items))
-          }
-        >
-          Reset itemData
-        </button>
-      </div>
+      <Sidebar
+        setOverlayMenuData={setOverlayMenuData}
+        itemData={itemData}
+        viewBy={viewBy}
+        setViewBy={setViewBy}
+      />
 
       {overlayMenuData.menuVisibility && (
         <OverlayMenu

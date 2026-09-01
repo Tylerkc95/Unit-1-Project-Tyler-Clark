@@ -9,7 +9,7 @@ const ItemDetailsMenu = ({
   let item = overlayMenuData.menuItem;
   return (
     <div className="overlay-menu">
-      <img src={item.image}/>
+      <img src={item.image} />
       <span>Name: {item.name}</span>
       <span>Project: {item.project}</span>
       <span>Progress: {item.progress}</span>
@@ -36,14 +36,13 @@ const ItemDetailsMenu = ({
         Edit Item
       </button>
       <button
-        onClick={() => (
+        onClick={() =>
           setOverlayAlertData((prevData) => ({
             ...prevData,
             alertVisibility: true,
             alertType: "delete-item",
-          })),
-          console.log("Delete button works")
-        )}
+          }))
+        }
       >
         Delete Item
       </button>

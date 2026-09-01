@@ -1,12 +1,7 @@
 import ItemCard from "./ItemCard";
 import "./ItemCard.css";
 
-const ItemDisplay = ({
-  setOverlayMenuData,
-  itemData,
-  viewBy,
-  displayType,
-}) => {
+const ItemDisplay = ({ setOverlayMenuData, itemData, viewBy, displayType }) => {
   // Creates an array of the unique options for each item attribute (ie project, tag, etc.)
   const listOptions = (attribute) =>
     itemData.reduce((optionsList, item) => {
@@ -15,15 +10,17 @@ const ItemDisplay = ({
       return optionsList;
     }, []);
 
-    console.log(listOptions("project"))
-
   // Small child components used throughout this parent component
   const CardHeader = ({ option }) => {
     return <div>{option === "" ? `No ${viewBy} assigned` : option}</div>;
   };
 
   const ListHeader = ({ option, onClick }) => {
-    return <h3 onClick={onClick}>{option === "" ? `No ${viewBy} assigned` : option}</h3>;
+    return (
+      <h3 onClick={onClick}>
+        {option === "" ? `No ${viewBy} assigned` : option}
+      </h3>
+    );
   };
 
   const ListItem = ({ item, onClick }) => {
@@ -57,12 +54,7 @@ const ItemDisplay = ({
             ))
           : listOptions(viewBy).map((option, index) => (
               <div key={option + index}>
-                <CategoryElement
-                  option={option}
-                  onClick={() =>
-                    console.log(`Clicking ${option} doesn't do anything yet!`)
-                  }
-                />
+                <CategoryElement option={option} />
                 <ul>
                   {itemData
                     .filter((item) => item[viewBy] === option)

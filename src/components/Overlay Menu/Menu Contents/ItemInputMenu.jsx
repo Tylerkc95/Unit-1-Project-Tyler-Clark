@@ -36,7 +36,6 @@ const ItemInputMenu = ({
     } else if (menuType === "new-item") {
       resetFormData();
     }
-    console.log("useEffect");
   }, [overlayMenuData]);
 
   const handleChange = (e) => {
@@ -92,8 +91,6 @@ const ItemInputMenu = ({
 
     const itemToSave = new Item(...itemDetails);
 
-    console.log(...itemDetails);
-
     if (menuType === "new-item") {
       setItemData((prevItems) => [...prevItems, itemToSave]);
     } else if (menuType === "edit-item") {
@@ -107,8 +104,6 @@ const ItemInputMenu = ({
       menuType: "item-details", // also sets menuType = "item-details"
       menuItem: itemToSave, // also sets currentItem = itemToSave
     }));
-
-    console.log(currentItem);
   };
 
   const handleImageUpload = (e) => {
