@@ -35,7 +35,18 @@ const Dashboard = () => {
 
   // Saves itemData to local storage any time itemData changes
   useEffect(() => {
-    localStorage.setItem("itemData", JSON.stringify(itemData));
+    try {
+      localStorage.setItem("itemData", JSON.stringify(itemData));
+    } catch (error) {
+      error.message.includes(
+        "Failed to execute 'setItem' on 'Storage': Setting the value of 'itemData' exceeded the quota.",
+      ) &&
+        setOverlayAlertData((prevData) => ({
+          ...prevData,
+          alertVisibility: true,
+          alertType: "storage-limit-reached",
+        }));
+    }
   }, [itemData]);
 
   return (
@@ -69,7 +80,7 @@ const Dashboard = () => {
           displayType="list"
         />
         <hr />
-        
+
         <Link to="/about">
           <img src={"../src/images/gear-solid-full.svg"} />
         </Link>
