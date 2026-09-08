@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import dwindleScreenshot from "../images/dwindle-screenshot.png";
 import "./Home.css";
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
           </div>
           <img
             id="home-right"
-            src={"../src/images/dwindle-screenshot.png"}
+            src={dwindleScreenshot}
             alt="Screenshot of the dwindle dashboard."
           />
         </div>

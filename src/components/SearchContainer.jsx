@@ -1,4 +1,6 @@
 import { useState } from "react";
+import searchIcon from "../images/magnifying-glass-solid-full.svg";
+import xIcon from "../images/x-solid-full.svg";
 
 const SearchContainer = ({ setOverlayMenuData, itemData }) => {
   const [query, setQuery] = useState("");
@@ -26,11 +28,7 @@ const SearchContainer = ({ setOverlayMenuData, itemData }) => {
         ></input>
         <img
           id="search-bar-icon"
-          src={
-            isQueryEmpty
-              ? "../src/images/magnifying-glass-solid-full.svg"
-              : "../src/images/x-solid-full.svg"
-          }
+          src={isQueryEmpty ? searchIcon : xIcon}
           onClick={() => (isQueryEmpty ? null : setQuery(""))}
           alt="Search bar icon"
         />
