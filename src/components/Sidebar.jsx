@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { useState } from "react";
 import SearchContainer from "./SearchContainer";
 import ItemDisplay from "./ItemDisplay";
+import settingsIcon from "../images/gear-solid-full.svg";
 
 const Sidebar = ({ setOverlayMenuData, itemData, viewBy, setViewBy }) => {
   const [sidebarType, setSidebarType] = useState("item-nav");
@@ -55,7 +56,7 @@ const Sidebar = ({ setOverlayMenuData, itemData, viewBy, setViewBy }) => {
       {sidebarType === "item-nav" ? (
         <img
           id="settings-button"
-          src={"../src/images/gear-solid-full.svg"}
+          src={settingsIcon}
           onClick={() => setSidebarType("settings")}
           alt="Settings icon"
         />
